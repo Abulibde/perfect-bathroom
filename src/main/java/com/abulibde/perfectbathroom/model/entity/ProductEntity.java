@@ -1,8 +1,7 @@
 package com.abulibde.perfectbathroom.model.entity;
 
-import com.abulibde.perfectbathroom.model.enu.CategoryEnum;
+import com.abulibde.perfectbathroom.model.enums.CategoryEnum;
 import jakarta.persistence.*;
-import jdk.jfr.Category;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

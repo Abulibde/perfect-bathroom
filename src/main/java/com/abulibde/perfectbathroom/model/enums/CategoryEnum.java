@@ -1,4 +1,4 @@
-package com.abulibde.perfectbathroom.model.enu;
+package com.abulibde.perfectbathroom.model.enums;
 
 public enum CategoryEnum {
     SHOWER_ENCLOSURES,
