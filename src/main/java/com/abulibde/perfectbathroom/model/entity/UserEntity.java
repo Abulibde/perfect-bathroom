@@ -1,6 +1,6 @@
 package com.abulibde.perfectbathroom.model.entity;
 
-import com.abulibde.perfectbathroom.model.enums.UserRoles;
+import com.abulibde.perfectbathroom.model.enums.UserRolesEnum;
 import jakarta.persistence.*;
 
 @Entity
@@ -26,7 +26,7 @@ public class UserEntity extends BaseEntity {
     private String password;
 
     @Enumerated(EnumType.STRING)
-    private UserRoles role;
+    private UserRolesEnum role;
     //private Set<Order> orders;
 
 
@@ -78,11 +78,11 @@ public class UserEntity extends BaseEntity {
         this.password = password;
     }
 
-    public UserRoles getRole() {
+    public UserRolesEnum getRole() {
         return role;
     }
 
-    public void setRole(UserRoles role) {
+    public void setRole(UserRolesEnum role) {
         this.role = role;
     }
 }
