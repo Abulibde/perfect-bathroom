@@ -1,10 +1,8 @@
 <!DOCTYPE>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 
-<head>
-    <title>Perfect Bathroom</title>
-    <link rel="stylesheet" href="/css/style.css">
+<head th:replace="~{fragments/head}">
 </head>
 <body>
 <div class="banner">
@@ -13,8 +11,13 @@
         <h1>DESIGN YOUR PERFECT BATHROOM</h1>
         <p>Subscribe <br>easy</p>
         <div>
-            <button type="button"><span></span>LOG IN</button>
-            <button type="button"><span></span>REGISTER</button>
+            <a href="/users/login">
+                <button type="button"><span></span>LOG IN</button>
+            </a>
+            <a href="/users/register">
+                <button type="button"><span></span>REGISTER</button>
+            </a>
+
         </div>
     </div>
 </div>

@@ -1,13 +1,15 @@
 <!doctype html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head}">
+</head>
 <body>
 <nav th:fragment="navbar"
      class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
     <img src="/images/logo.png" class="logo" alt="logo">
     <ul>
-        <li><a href="#">Home</a> </li>
-        <li><a href="#">Gallery</a> </li>
+        <li><a href="/">Home</a> </li>
+        <li><a href="/gallery">Gallery</a> </li>
         <li><a href="#">Dining</a> </li>
         <li><a href="#">Backyard</a> </li>
         <li><a href="#">Kitchen</a> </li>

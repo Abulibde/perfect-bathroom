@@ -1,0 +1,40 @@
+<!DOCTYPE>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head}">
+</head>
+
+<body>
+<div class="banner">
+    <nav th:replace="~{fragments/navbar}"></nav>
+</div>
+
+<div class="wrapper">
+
+    <!-- Registration form START -->
+    <form th:action="@{/users/login}"
+          th:method="POST">
+
+        <h1>Login</h1>
+
+        <div class="input-box">
+            <div class="input-field">
+                <input type="text" placeholder="Username" required>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-field">
+                <input type="password" placeholder="Password" required>
+                <i class='bx bx-lock' ></i>
+            </div>
+        </div>
+        <button type="submit" class="btn">Login</button>
+    </form>
+    <!-- Registration form END -->
+</div>
+
+
+</body>
+
+
+</html>
