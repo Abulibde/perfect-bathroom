@@ -1,0 +1,70 @@
+<!DOCTYPE>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewpoint" content="width=device-width,
+    initial-scale=1.0">
+    <title> Registration form Perfect Bathroom</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/styleRegister.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+<nav th:replace="~{fragments/navbar}"></nav>
+
+<div class="wrapper">
+
+    <!-- Registration form START -->
+    <form th:action="@{/users/register}"
+          th:method="POST">
+
+        <h1>Registration</h1>
+
+        <div class="input-box">
+            <div class="input-field">
+                <input type="text" placeholder="Username" required>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="input-field">
+                <input type="text" placeholder="Last Name" required>
+                <i class='bx bxs-user'></i>
+            </div>
+        </div>
+
+        <div class="input-box">
+            <div class="input-field">
+                <input type="email" placeholder="Email" required>
+                <i class='bx bxs-envelope' ></i>
+            </div>
+            <div class="input-field">
+                <input type="number" placeholder="Phone Number" required>
+                <i class='bx bxs-phone' ></i>
+            </div>
+        </div>
+
+        <div class="input-box">
+            <div class="input-field">
+                <input type="password" placeholder="Password" required>
+                <i class='bx bx-lock' ></i>
+            </div>
+            <div class="input-field">
+                <input type="password" placeholder="Confirm Password" required>
+                <i class='bx bx-lock' ></i>
+            </div>
+        </div>
+        <label><input type="checkbox">I hereby declare that the above information provided is true and correct</label>
+
+        <button type="submit" class="btn">Register</button>
+    </form>
+    <!-- Registration form END -->
+</div>
+
+
+</body>
+
+
+</html>
