@@ -3,55 +3,52 @@ package com.abulibde.perfectbathroom.model.entity;
 import com.abulibde.perfectbathroom.model.enums.UserRolesEnum;
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "users")
 public class UserEntity extends BaseEntity {
 
     @Column(nullable = false, unique = true)
-    private String nickname;
+    private String username;
 
     @Column(nullable = false)
-    private String firstName;
-
-    @Column(nullable = false)
-    private String lastName;
+    private String fullName;
 
     @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)
-    private int age;
+    private int phoneNumber;
 
     @Column(nullable = false)
     private String password;
 
     @Enumerated(EnumType.STRING)
     private UserRolesEnum role;
-    //private Set<Order> orders;
+    private boolean active;
+
+    @OneToMany(
+            mappedBy = "user"
+    )
+    private Set<OrderEntity> orders;
 
 
-    public String getNickname() {
-        return nickname;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getFirstName() {
-        return firstName;
+
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getEmail() {
@@ -62,12 +59,12 @@ public class UserEntity extends BaseEntity {
         this.email = email;
     }
 
-    public int getAge() {
-        return age;
+    public int getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setPhoneNumber(int age) {
+        this.phoneNumber = age;
     }
 
     public String getPassword() {
@@ -84,5 +81,21 @@ public class UserEntity extends BaseEntity {
 
     public void setRole(UserRolesEnum role) {
         this.role = role;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public Set<OrderEntity> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<OrderEntity> orders) {
+        this.orders = orders;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }
