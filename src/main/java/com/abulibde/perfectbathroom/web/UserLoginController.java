@@ -1,6 +1,7 @@
 package com.abulibde.perfectbathroom.web;
 
 import com.abulibde.perfectbathroom.model.dto.UserLoginDTO;
+import com.abulibde.perfectbathroom.model.dto.UserServiceModel;
 import com.abulibde.perfectbathroom.model.entity.UserEntity;
 import com.abulibde.perfectbathroom.service.UserService;
 import jakarta.validation.Valid;
@@ -22,7 +23,7 @@ public class UserLoginController {
     }
 
     @GetMapping("/login")
-    public String register() {
+    public String login() {
         return "login";
     }
 
@@ -43,16 +44,16 @@ public class UserLoginController {
             return "redirect:login";
         }
 
-        UserEntity userEntity = userService.findByUsernameAndPassword(
+        UserServiceModel userServiceModel = userService.findByUsernameAndPassword(
                 userLoginDTO.getUsername(), userLoginDTO.getPassword());
 
-        if (userEntity == null) {
+        if (userServiceModel == null) {
             redirectAttributes.addFlashAttribute("userLoginDTO", userLoginDTO);
             redirectAttributes.addFlashAttribute("isFound", false);
             return "redirect:login";
         }
 
-        userService.loginUser(userEntity.getId(), userLoginDTO.getUsername());
+        userService.loginUser(userServiceModel.getId(), userLoginDTO.getUsername());
 
         return "redirect:/";
     }

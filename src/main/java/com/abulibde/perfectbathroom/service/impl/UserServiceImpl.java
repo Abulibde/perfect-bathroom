@@ -1,22 +1,24 @@
 package com.abulibde.perfectbathroom.service.impl;
 
 import com.abulibde.perfectbathroom.model.dto.UserRegistrationDTO;
+import com.abulibde.perfectbathroom.model.dto.UserServiceModel;
 import com.abulibde.perfectbathroom.model.entity.UserEntity;
 import com.abulibde.perfectbathroom.model.enums.UserRolesEnum;
 import com.abulibde.perfectbathroom.repository.UserRepository;
 import com.abulibde.perfectbathroom.service.UserService;
-import com.abulibde.perfectbathroom.util.CurrentUser;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final CurrentUser currentUser;
 
-    public UserServiceImpl(UserRepository userRepository, CurrentUser currentUser) {
+    private final ModelMapper modelMapper;
+
+    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper) {
         this.userRepository = userRepository;
-        this.currentUser = currentUser;
+        this.modelMapper = modelMapper;
     }
 
     @Override
@@ -25,16 +27,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserEntity findByUsernameAndPassword(String username, String password) {
+    public UserServiceModel findByUsernameAndPassword(String username, String password) {
 
-        return userRepository.findByUsernameAndPassword(username,password).orElse(null);
-    }
+        return userRepository.findByUsernameAndPassword(username,password)
+                .map(user -> modelMapper.map(user, UserServiceModel.class))
+                .orElse(null);    }
 
-    @Override
-    public void loginUser(Long id, String username) {
-        currentUser.setId(id);
-        currentUser.setUsername(username);
-    }
 
 
     private UserEntity map(UserRegistrationDTO userRegistrationDTO) {
