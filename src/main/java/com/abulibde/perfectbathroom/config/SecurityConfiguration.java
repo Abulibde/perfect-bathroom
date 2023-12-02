@@ -1,9 +1,14 @@
 package com.abulibde.perfectbathroom.config;
 
+import com.abulibde.perfectbathroom.repository.UserRepository;
+import com.abulibde.perfectbathroom.service.impl.PerfectBathroomUserDetailsService;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.Pbkdf2PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -51,4 +56,15 @@ public class SecurityConfiguration {
     }
 
     @Bean
+    public UserDetailsService userDetailsService(UserRepository userRepository){
+        //This service translates the PerfectBathroom users and roles to
+        //representation which spring security understands
+        return new PerfectBathroomUserDetailsService(userRepository);
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return Pbkdf2PasswordEncoder.defaultsForSpringSecurity_v5_8();
+    }
+
 }
