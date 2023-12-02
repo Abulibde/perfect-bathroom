@@ -7,6 +7,7 @@ import com.abulibde.perfectbathroom.model.enums.UserRolesEnum;
 import com.abulibde.perfectbathroom.repository.UserRepository;
 import com.abulibde.perfectbathroom.service.UserService;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,10 +15,13 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
+    private final PasswordEncoder passwordEncoder;
+
     private final ModelMapper modelMapper;
 
-    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper) {
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, ModelMapper modelMapper) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
         this.modelMapper = modelMapper;
     }
 
@@ -42,7 +46,7 @@ public class UserServiceImpl implements UserService {
         userEntity.setFullName(userRegistrationDTO.getFullName());
         userEntity.setEmail(userRegistrationDTO.getEmail());
         userEntity.setPhoneNumber(userRegistrationDTO.getPhoneNumber());
-        userEntity.setPassword(userRegistrationDTO.getPassword());
+        userEntity.setPassword(passwordEncoder.encode(userRegistrationDTO.getPassword()));
         userEntity.setRole(UserRolesEnum.USER);
         userEntity.setActive(true);
 
