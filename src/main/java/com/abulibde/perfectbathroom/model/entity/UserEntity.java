@@ -1,8 +1,9 @@
 package com.abulibde.perfectbathroom.model.entity;
 
-import com.abulibde.perfectbathroom.model.enums.UserRolesEnum;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -24,15 +25,19 @@ public class UserEntity extends BaseEntity {
     @Column(nullable = false)
     private String password;
 
-    @Enumerated(EnumType.STRING)
-    private UserRolesEnum role;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private List<UserRoleEntity> roles = new ArrayList<>();
+
     private boolean active;
 
     @OneToMany(
             mappedBy = "user"
     )
     private Set<OrderEntity> orders;
-
 
     public String getUsername() {
         return username;
@@ -75,12 +80,12 @@ public class UserEntity extends BaseEntity {
         this.password = password;
     }
 
-    public UserRolesEnum getRole() {
-        return role;
+    public List<UserRoleEntity> getRoles() {
+        return roles;
     }
 
-    public void setRole(UserRolesEnum role) {
-        this.role = role;
+    public void setRoles(List<UserRoleEntity> roles) {
+        this.roles = roles;
     }
 
     public boolean isActive() {

@@ -47,7 +47,6 @@ public class UserServiceImpl implements UserService {
         userEntity.setEmail(userRegistrationDTO.getEmail());
         userEntity.setPhoneNumber(userRegistrationDTO.getPhoneNumber());
         userEntity.setPassword(passwordEncoder.encode(userRegistrationDTO.getPassword()));
-        userEntity.setRole(UserRolesEnum.USER);
         userEntity.setActive(true);
 
         return userEntity;
