@@ -43,7 +43,7 @@ public class SecurityConfiguration {
                 logout ->{
                     logout
                             //The url where we should POST sth in order to perform logout
-                            .logoutUrl("users/logout")
+                            .logoutUrl("/users/logout")
                             //Redirect here with successful logout
                             .logoutSuccessUrl("/")
                             //Invalidate the HTTP session

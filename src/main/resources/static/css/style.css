@@ -54,7 +54,12 @@
     width: 100%;
 }
 
-.content{
+/* test code about dropdown menu in nav bar*/
+
+
+/* end of test code */
+
+.content {
     width: 100%;
     position: absolute;
     top: 50%;
@@ -62,18 +67,19 @@
     text-align: center;
     color: #fff;
 }
-.content h1{
+
+.content h1 {
     font-size: 70px;
     margin-top: 80px;
 }
 
-.content p{
+.content p {
     margin: 20px auto;
     font-weight: 100;
     line-height: 25px;
 }
 
-button{
+button {
     width: 200px;
     padding: 15px 0;
     text-align: center;
@@ -88,7 +94,7 @@ button{
     overflow: hidden;
 }
 
-span{
+span {
     background: #009688;
     height: 100%;
     width: 0;
@@ -100,10 +106,10 @@ span{
     transition: 0.5s;
 }
 
-button:hover span{
+button:hover span {
     width: 100%;
 }
 
-button:hover{
+button:hover {
     border: none;
 }
