@@ -14,23 +14,51 @@
         <li><a href="#">Dining</a></li>
         <!-- Dropdown menu fo Admins only-->
         <li class="nav-item dropdown" sec:authorize="hasRole('ADMIN')">
-            <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button"
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Admin
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/">Action</a>
-                <a class="dropdown-item" href="/">Another action</a>
+                <form th:method="get"
+                      th:action="@{/}">
+                    <button sec:authorize="isAuthenticated()" type="submit" ><span></span>ACTION</button>
+                </form>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/">Something else here</a>
+                <form th:method="get"
+                      th:action="@{/}">
+                    <button sec:authorize="isAuthenticated()" type="submit" ><span></span>ACTION 1</button>
+                </form>
+                <div class="dropdown-divider"></div>
+                <form th:method="get"
+                      th:action="@{/}">
+                    <button sec:authorize="isAuthenticated()" type="submit" ><span></span>ACTION 2</button>
+                </form>
             </div>
         </li>
         <!-- End of Dropdown menu fo Admins only-->
-        <li><a sec:authorize="isAuthenticated()" sec:authentication="name" href="#"></a></li>
-        <li> <form th:method="post"
-                   th:action="@{/users/logout}">
-            <button sec:authorize="isAuthenticated()" type="submit" ><span></span>LOGOUT</button>
-        </form></li>
+
+        <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+            <a class="nav-link dropdown-toggle" id="profileDropdown" role="button"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+               sec:authorize="isAuthenticated()" sec:authentication="name" href="#">
+                User
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                <form th:method="get"
+                      th:action="@{/users/profile}">
+                    <button sec:authorize="isAuthenticated()" type="submit" ><span></span>PROFILE</button>
+                </form>
+
+                <div class="dropdown-divider"></div>
+
+                <form th:method="post"
+                      th:action="@{/users/logout}">
+                    <button sec:authorize="isAuthenticated()" type="submit" ><span></span>LOGOUT</button>
+                </form>
+
+            </div>
+        </li>
     </ul>
 
 

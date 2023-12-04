@@ -68,12 +68,15 @@
 .navbar ul .dropdown .dropdown-menu {
     display: none;
     position: absolute;
-    background: #343a40; /* Dark background color */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+    background: transparent; /* Dark background color */
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);    z-index: 1;
     list-style: none;
     padding: 10px;
     min-width: 160px;
+    /* Set the dropdown to open downwards and to the left */
+    top: 100%; /* Position below the parent */
+    right: 0; /* Align with the right edge of the parent */
 }
 
 .navbar ul .dropdown .dropdown-menu a {
