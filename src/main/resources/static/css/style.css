@@ -56,6 +56,36 @@
 
 /* test code about dropdown menu in nav bar*/
 
+/* Dropdown styles */
+.navbar ul .dropdown {
+    position: relative;
+}
+
+.navbar ul .dropdown .dropdown-toggle {
+    cursor: pointer;
+}
+
+.navbar ul .dropdown .dropdown-menu {
+    display: none;
+    position: absolute;
+    background: #343a40; /* Dark background color */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    list-style: none;
+    padding: 10px;
+    min-width: 160px;
+}
+
+.navbar ul .dropdown .dropdown-menu a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar ul .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* End of Dropdown styles */
 
 /* end of test code */
 

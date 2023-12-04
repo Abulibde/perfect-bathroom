@@ -1,13 +1,15 @@
 package com.abulibde.perfectbathroom.service.impl;
 
 import com.abulibde.perfectbathroom.model.entity.UserEntity;
+import com.abulibde.perfectbathroom.model.entity.UserRoleEntity;
 import com.abulibde.perfectbathroom.repository.UserRepository;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import java.util.List;
 
 public class PerfectBathroomUserDetailsService implements UserDetailsService {
 
@@ -20,20 +22,28 @@ public class PerfectBathroomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByUsername(username)
-                .map(this::map)
+                .map(PerfectBathroomUserDetailsService::map)
                 .orElseThrow(() ->
                         new UsernameNotFoundException("User " + username + " is not found"));
 
     }
 
-    private UserDetails map(UserEntity userEntity) {
+    private static UserDetails map(UserEntity userEntity) {
 
-        UserDetails userDetails = User
+        return User
                 .withUsername(userEntity.getUsername())
                 .password(userEntity.getPassword())
-                .authorities(List.of())//TODO:-------- add roles
+                .authorities(userEntity
+                        .getRoles()
+                        .stream()
+                        .map(PerfectBathroomUserDetailsService::map)
+                        .toList())
                 .build();
 
-        return userDetails;
+    }
+
+    private static GrantedAuthority map(UserRoleEntity userRoleEntity) {
+        return new SimpleGrantedAuthority(
+                "ROLE_" + userRoleEntity.getRole().name());
     }
 }

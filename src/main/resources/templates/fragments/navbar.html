@@ -12,7 +12,20 @@
         <li><a href="/">Home</a></li>
         <li><a href="/gallery">Gallery</a></li>
         <li><a href="#">Dining</a></li>
-        <li><a href="#">Backyard</a></li>
+        <!-- Dropdown menu fo Admins only-->
+        <li class="nav-item dropdown" sec:authorize="hasRole('ADMIN')">
+            <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Admin
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/">Action</a>
+                <a class="dropdown-item" href="/">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/">Something else here</a>
+            </div>
+        </li>
+        <!-- End of Dropdown menu fo Admins only-->
         <li><a sec:authorize="isAuthenticated()" sec:authentication="name" href="#"></a></li>
         <li> <form th:method="post"
                    th:action="@{/users/logout}">
