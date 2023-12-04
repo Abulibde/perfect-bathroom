@@ -29,7 +29,7 @@ public class SecurityConfiguration {
                         //All static resources which are situated in js, images, css are available for anyone
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         //Allow anyone to visit home, registration and login page
-                        .requestMatchers("/", "/users/login", "users/register").permitAll()
+                        .requestMatchers("/", "/users/login", "users/register", "/users/login-error").permitAll()
                         //all other requests are authenticated
                         .anyRequest().authenticated()
 
@@ -65,7 +65,6 @@ public class SecurityConfiguration {
                 }
 
         );
-        // TODO: remember me!
 
       return   httpSecurity.build();
     }

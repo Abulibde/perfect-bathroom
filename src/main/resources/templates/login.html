@@ -19,10 +19,16 @@
 
         <h1>Login</h1>
 
+        <p th:if="${bad_credentials}" class="errors alert alert-danger" style="color: red" >
+            Invalid username or password.
+        </p>
+
+
         <div class="input-box">
             <div class="input-field">
                 <input id="username"
                        name="username"
+                       th:value="${username}"
                        type="text"
                        placeholder="Username" required>
                 <i class='bx bxs-user'></i>
@@ -32,16 +38,18 @@
                        name="password"
                        type="password"
                        placeholder="Password" required>
-                <i class='bx bx-lock' ></i>
+                <i class='bx bx-lock'></i>
             </div>
         </div>
+
         <div class="input-field">
             <label for="rememberme" class="text-white front-weight-bold">Remember me</label>
             <input id="rememberme"
                    name="rememberme"
                    type="checkbox">
-            <i class='bx bx-lock' ></i>
+            <i class='bx bx-lock'></i>
         </div>
+
         <button type="submit" class="btn">Login</button>
     </form>
     <!-- Registration form END -->
