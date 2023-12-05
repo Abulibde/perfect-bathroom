@@ -90,7 +90,9 @@
 
 /* End of Dropdown styles */
 
-/* end of test code */
+/* test category code */
+
+/* end of  test category code */
 
 .content {
     width: 100%;
@@ -145,4 +147,25 @@ button:hover span {
 
 button:hover {
     border: none;
+}
+
+.column{
+    float: left;
+    width: 30%;
+    height: 2px;
+    padding: 5px;
+}
+.row{
+    height: 20px;
+}
+.row::after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.categories{
+    margin: 50px 0;
+    padding-right: 50px;
+    padding-left: 50px;
 }

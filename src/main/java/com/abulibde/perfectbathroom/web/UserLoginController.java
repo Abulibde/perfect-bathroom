@@ -27,4 +27,15 @@ public class UserLoginController {
         return "login";
     }
 
+    @GetMapping("/home")
+    public String home() {
+        return "home";
+    }
+
+    @GetMapping("/gallery")
+    public String gallery() {
+        return "gallery";
+    }
+
+
 }
