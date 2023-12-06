@@ -61,6 +61,77 @@ body{
     border-bottom: 4px solid #009688;
 }
 
+/* Dropdown styles */
+.navbar ul .dropdown {
+    position: relative;
+}
+
+.navbar ul .dropdown .dropdown-toggle {
+    cursor: pointer;
+}
+
+.navbar ul .dropdown .dropdown-menu {
+    display: none;
+    position: absolute;
+    background: transparent; /* Dark background color */
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);    z-index: 1;
+    list-style: none;
+    padding: 10px;
+    min-width: 160px;
+    /* Set the dropdown to open downwards and to the left */
+    top: 100%; /* Position below the parent */
+    right: 0; /* Align with the right edge of the parent */
+}
+
+.navbar ul .dropdown .dropdown-menu a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar ul .dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* End of Dropdown styles */
+
+    /* Button in navbar */
+button {
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    margin: 20px 10px;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 2px solid #009688;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+span {
+    background: #009688;
+    height: 100%;
+    width: 0;
+    border-radius: 20px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: 0.5s;
+}
+
+button:hover span {
+    width: 100%;
+}
+
+button:hover {
+    border: none;
+}
+    /* Button in navbar end */
+
     /* Content */
 
 .content{

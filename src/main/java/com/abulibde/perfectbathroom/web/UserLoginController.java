@@ -37,5 +37,10 @@ public class UserLoginController {
         return "gallery";
     }
 
+    @GetMapping("/dining")
+    public String dining() {
+        return "dining";
+    }
+
 
 }
