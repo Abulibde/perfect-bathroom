@@ -1,6 +1,6 @@
 package com.abulibde.perfectbathroom.web;
 
-import com.abulibde.perfectbathroom.model.dto.UserRegistrationDTO;
+import com.abulibde.perfectbathroom.model.dto.userDTO.UserRegistrationDTO;
 import com.abulibde.perfectbathroom.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

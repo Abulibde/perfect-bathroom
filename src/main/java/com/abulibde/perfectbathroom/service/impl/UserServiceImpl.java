@@ -1,9 +1,8 @@
 package com.abulibde.perfectbathroom.service.impl;
 
-import com.abulibde.perfectbathroom.model.dto.UserRegistrationDTO;
-import com.abulibde.perfectbathroom.model.dto.UserServiceModel;
+import com.abulibde.perfectbathroom.model.dto.userDTO.UserRegistrationDTO;
+import com.abulibde.perfectbathroom.model.dto.userDTO.UserServiceModel;
 import com.abulibde.perfectbathroom.model.entity.UserEntity;
-import com.abulibde.perfectbathroom.model.enums.UserRolesEnum;
 import com.abulibde.perfectbathroom.repository.UserRepository;
 import com.abulibde.perfectbathroom.service.UserService;
 import org.modelmapper.ModelMapper;

@@ -31,7 +31,7 @@ public class SecurityConfiguration {
                         //Allow anyone to visit home, registration and login page
                         .requestMatchers("/", "/users/login", "users/register",
                                 "/users/login-error", "/users/home",
-                                "users/gallery").permitAll()
+                                "users/gallery", "users/dining").permitAll()
                         //all other requests are authenticated
                         .anyRequest().authenticated()
 

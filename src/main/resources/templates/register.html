@@ -2,82 +2,197 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
+<!-- Head -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewpoint" content="width=device-width,
+    initial-scale=1.0">
+    <title>Perfect Bathroom</title>
+    <link rel="stylesheet" href="/css/homeStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-<head th:replace="~{fragments/head}">
 </head>
+<!-- Head End -->
+
 
 <body>
-<div class="banner">
-    <nav th:replace="~{fragments/navbar}"></nav>
-</div>
 
-<div class="wrapper">
+<!-- Navbar -->
+<nav class="navbar">
+    <a href="/">
+        <div class="logo"><h1>Perfect-Bathroom</h1></div>
+    </a>
+    <ul class="menu">
+        <li><a href="/users/home" class="active">Home</a></li>
+        <li><a href="/users/gallery">Gallery</a></li>
+        <li><a href="/users/dining">Dining</a></li>
 
-    <!-- Registration form START -->
-    <form th:action="@{/users/register}"
-          th:method="POST">
-
-        <h1>Registration</h1>
-
-        <div class="input-box">
-            <div class="input-field">
-                <input id="username"
-                       name="username"
-                       type="text"
-                       placeholder="Username" required>
-                <i class='bx bxs-user'></i>
+        <!-- Dropdown menu fo Admins only-->
+        <li class="nav-item dropdown" sec:authorize="hasRole('ADMIN')">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Admin
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <form th:method="get"
+                      th:action="@{/}">
+                    <button sec:authorize="isAuthenticated()" type="submit"><span></span>ACTION</button>
+                </form>
+                <div class="dropdown-divider"></div>
+                <form th:method="get"
+                      th:action="@{/}">
+                    <button sec:authorize="isAuthenticated()" type="submit"><span></span>ACTION 1</button>
+                </form>
+                <div class="dropdown-divider"></div>
+                <form th:method="get"
+                      th:action="@{/}">
+                    <button sec:authorize="isAuthenticated()" type="submit"><span></span>ACTION 2</button>
+                </form>
             </div>
-            <div class="input-field">
-                <input id="fullName"
-                       name="fullName"
-                       type="text"
-                       placeholder="Full Name" required>
-                <i class='bx bxs-user'></i>
-            </div>
-        </div>
+        </li>
+        <!-- End of Dropdown menu fo Admins only-->
 
-        <div class="input-box">
-            <div class="input-field">
-                <input id="email"
-                       name="email"
-                       type="email"
-                       placeholder="Email" required>
-                <i class='bx bxs-envelope'></i>
-            </div>
-            <div class="input-field">
-                <input id="phoneNumber"
-                       name="phoneNumber"
-                       type="number"
-                       placeholder="Phone Number" required>
-                <i class='bx bxs-phone'></i>
-            </div>
-        </div>
+        <!-- Dropdown menu for user account -->
+        <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+            <a class="nav-link dropdown-toggle" id="profileDropdown" role="button"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+               sec:authorize="isAuthenticated()" sec:authentication="name" href="#">
+                User
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-        <div class="input-box">
-            <div class="input-field">
-                <input id="password"
-                       name="password"
-                       type="password"
-                       placeholder="Password" required>
-                <i class='bx bx-lock'></i>
-            </div>
-            <div class="input-field">
-                <input id="confirmPassword"
-                       name="confirmPassword"
-                       type="password"
-                       placeholder="Confirm Password" required>
-                <i class='bx bx-lock'></i>
-            </div>
-        </div>
-        <label><input type="checkbox">I hereby declare that the above information provided is true and correct</label>
+                <form th:method="get"
+                      th:action="@{/users/profile}">
+                    <button sec:authorize="isAuthenticated()" type="submit"><span></span>PROFILE</button>
+                </form>
 
-        <button type="submit" class="btn">Register</button>
-    </form>
-    <!-- Registration form END -->
-</div>
+                <div class="dropdown-divider"></div>
 
+                <form th:method="post"
+                      th:action="@{/users/logout}">
+                    <button sec:authorize="isAuthenticated()" type="submit"><span></span>LOGOUT</button>
+                </form>
+
+            </div>
+        </li>
+        <!-- Dropdown menu for user account -->
+        <li><a href=""><i class="fas fa-shopping-cart"></i></i> </a></li>
+    </ul>
+
+    <!---For responsive button --->
+    <div class="menu-btn">
+        <i class="fa fa-bars"></i>
+    </div>
+</nav>
+<!-- Navbar End -->
+
+
+<section class="content">
+    <!-- Lyrics
+    <h1> Welcome,
+        <th:block sec:authorize="isAuthenticated()">
+            <th:block sec:authentication="name"></th:block>
+        </th:block></h1>
+    <h3>DESIGN YOUR PERFECT BATHROOM</h3>
+    <h3> Welcome,
+        <th:block sec:authorize="!isAuthenticated()"> Please Login or Register</th:block>
+    </h3>
+    <a href="/users/login">
+        <button sec:authorize="!isAuthenticated()" type="button"><span></span>LOG IN</button>
+    </a>
+    <a href="/users/register">
+        <button sec:authorize="!isAuthenticated()" type="button"><span></span>REGISTER</button>
+    </a>
+    <a href="#productSection">
+        <button sec:authorize="isAuthenticated()" type="button"><span></span>SHOP NOW</button>
+    </a> -->
+    <div class="wrapper">
+
+        <!-- Registration form START -->
+        <form th:action="@{/users/register}"
+              th:method="POST">
+
+            <h1>Registration</h1>
+
+            <div class="input-box">
+                <div class="input-field">
+                    <input id="username"
+                           name="username"
+                           type="text"
+                           placeholder="Username" required>
+                    <i class='bx bxs-user'></i>
+                </div>
+                <div class="input-field">
+                    <input id="fullName"
+                           name="fullName"
+                           type="text"
+                           placeholder="Full Name" required>
+                    <i class='bx bxs-user'></i>
+                </div>
+            </div>
+
+            <div class="input-box">
+                <div class="input-field">
+                    <input id="email"
+                           name="email"
+                           type="email"
+                           placeholder="Email" required>
+                    <i class='bx bxs-envelope'></i>
+                </div>
+                <div class="input-field">
+                    <input id="phoneNumber"
+                           name="phoneNumber"
+                           type="number"
+                           placeholder="Phone Number" required>
+                    <i class='bx bxs-phone'></i>
+                </div>
+            </div>
+
+            <div class="input-box">
+                <div class="input-field">
+                    <input id="password"
+                           name="password"
+                           type="password"
+                           placeholder="Password" required>
+                    <i class='bx bx-lock'></i>
+                </div>
+                <div class="input-field">
+                    <input id="confirmPassword"
+                           name="confirmPassword"
+                           type="password"
+                           placeholder="Confirm Password" required>
+                    <i class='bx bx-lock'></i>
+                </div>
+            </div>
+
+            <button type="submit" class="btn">Register</button>
+        </form>
+        <!-- Registration form END -->
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>Copyright at <a href="">Perfect-Bathroom</a></p>
+</footer>
+<!-- Footer -->
+
+<!--- Jquery --->
+<script>
+    $(".menu-btn").click(function () {
+        $(".navbar .menu").toggleClass("active");
+        $(".menu-btn i").toggleClass("active");
+    });
+</script>
+<!--- Jquery End --->
+-->
 
 </body>
-
-
 </html>

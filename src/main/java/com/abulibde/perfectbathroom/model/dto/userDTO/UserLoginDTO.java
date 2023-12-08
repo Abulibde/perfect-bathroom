@@ -1,4 +1,4 @@
-package com.abulibde.perfectbathroom.model.dto;
+package com.abulibde.perfectbathroom.model.dto.userDTO;
 
 public class UserLoginDTO {
 

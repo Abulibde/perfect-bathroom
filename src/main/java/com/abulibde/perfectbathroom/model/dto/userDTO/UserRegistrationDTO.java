@@ -1,4 +1,4 @@
-package com.abulibde.perfectbathroom.model.dto;
+package com.abulibde.perfectbathroom.model.dto.userDTO;
 
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
