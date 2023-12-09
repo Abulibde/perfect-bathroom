@@ -28,6 +28,7 @@ public class SecurityConfiguration {
                 authorizeRequests -> authorizeRequests
                         //All static resources which are situated in js, images, css are available for anyone
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+                        .requestMatchers("/error").permitAll()
                         //Allow anyone to visit home, registration and login page
                         .requestMatchers("/", "/users/login", "users/register",
                                 "/users/login-error", "/users/home",
