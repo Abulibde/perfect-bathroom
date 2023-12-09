@@ -26,9 +26,7 @@
 
 <!-- Navbar -->
 <nav class="navbar">
-    <a href="/">
-        <div class="logo"><h1>Perfect-Bathroom</h1></div>
-    </a>
+    <div class="logo"><a href="/"> <h1>Perfect-Bathroom</h1></a></div>
     <ul class="menu">
         <li><a href="/users/home" class="active">Home</a></li>
         <li><a href="/users/gallery">Gallery</a></li>
@@ -42,8 +40,8 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <form th:method="get"
-                      th:action="@{/}">
-                    <button sec:authorize="isAuthenticated()" type="submit"><span></span>ACTION</button>
+                      th:action="@{/product/add}">
+                    <button sec:authorize="isAuthenticated()" type="submit"><span></span>Add Product</button>
                 </form>
                 <div class="dropdown-divider"></div>
                 <form th:method="get"
@@ -95,24 +93,6 @@
 
 
 <section class="content">
-    <!-- Lyrics
-    <h1> Welcome,
-        <th:block sec:authorize="isAuthenticated()">
-            <th:block sec:authentication="name"></th:block>
-        </th:block></h1>
-    <h3>DESIGN YOUR PERFECT BATHROOM</h3>
-    <h3> Welcome,
-        <th:block sec:authorize="!isAuthenticated()"> Please Login or Register</th:block>
-    </h3>
-    <a href="/users/login">
-        <button sec:authorize="!isAuthenticated()" type="button"><span></span>LOG IN</button>
-    </a>
-    <a href="/users/register">
-        <button sec:authorize="!isAuthenticated()" type="button"><span></span>REGISTER</button>
-    </a>
-    <a href="#productSection">
-        <button sec:authorize="isAuthenticated()" type="button"><span></span>SHOP NOW</button>
-    </a> -->
     <div class="wrapper">
 
         <!-- Registration form START -->

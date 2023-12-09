@@ -5,13 +5,13 @@
 <head th:replace="~{fragments/head}">
 </head>
 <body>
-<nav th:fragment="navbar"
-     class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
-    <a href="/"> <img src="/images/logo.png" class="logo" alt="logo"></a>
-    <ul>
-        <li><a href="/users/home">Home</a></li>
+<nav th:fragment="navbar" class="navbar">
+    <div class="logo"><a href="/"> <h1>Perfect-Bathroom</h1></a></div>
+    <ul class="menu">
+        <li><a href="/users/home" class="active">Home</a></li>
         <li><a href="/users/gallery">Gallery</a></li>
         <li><a href="/users/dining">Dining</a></li>
+
         <!-- Dropdown menu fo Admins only-->
         <li class="nav-item dropdown" sec:authorize="hasRole('ADMIN')">
             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
@@ -21,22 +21,23 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <form th:method="get"
                       th:action="@{/}">
-                    <button sec:authorize="isAuthenticated()" type="submit" ><span></span>ACTION</button>
+                    <button sec:authorize="isAuthenticated()" type="submit"><span></span>Add Product</button>
                 </form>
                 <div class="dropdown-divider"></div>
                 <form th:method="get"
                       th:action="@{/}">
-                    <button sec:authorize="isAuthenticated()" type="submit" ><span></span>ACTION 1</button>
+                    <button sec:authorize="isAuthenticated()" type="submit"><span></span>ACTION 1</button>
                 </form>
                 <div class="dropdown-divider"></div>
                 <form th:method="get"
                       th:action="@{/}">
-                    <button sec:authorize="isAuthenticated()" type="submit" ><span></span>ACTION 2</button>
+                    <button sec:authorize="isAuthenticated()" type="submit"><span></span>ACTION 2</button>
                 </form>
             </div>
         </li>
         <!-- End of Dropdown menu fo Admins only-->
 
+        <!-- Dropdown menu for user account -->
         <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
             <a class="nav-link dropdown-toggle" id="profileDropdown" role="button"
                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
@@ -47,22 +48,26 @@
 
                 <form th:method="get"
                       th:action="@{/users/profile}">
-                    <button sec:authorize="isAuthenticated()" type="submit" ><span></span>PROFILE</button>
+                    <button sec:authorize="isAuthenticated()" type="submit"><span></span>PROFILE</button>
                 </form>
 
                 <div class="dropdown-divider"></div>
 
                 <form th:method="post"
                       th:action="@{/users/logout}">
-                    <button sec:authorize="isAuthenticated()" type="submit" ><span></span>LOGOUT</button>
+                    <button sec:authorize="isAuthenticated()" type="submit"><span></span>LOGOUT</button>
                 </form>
 
             </div>
         </li>
+        <!-- Dropdown menu for user account -->
+        <li><a href=""><i class="fas fa-shopping-cart"></i></i> </a></li>
     </ul>
 
-
-
+    <!---For responsive button --->
+    <div class="menu-btn">
+        <i class="fa fa-bars"></i>
+    </div>
 </nav>
 
 

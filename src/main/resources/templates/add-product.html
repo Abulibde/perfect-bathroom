@@ -1,8 +1,8 @@
 <!DOCTYPE>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec='http://www.thymeleaf.org/extras/spring-security' xmlns="http://www.w3.org/1999/html">
-
+      xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
+<!-- Head -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,9 +17,14 @@
             integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
+<!-- Head End -->
+
+
 <body>
 
+<!-- Navbar -->
 <nav class="navbar">
     <div class="logo"><a href="/"> <h1>Perfect-Bathroom</h1></a></div>
     <ul class="menu">
@@ -84,97 +89,100 @@
         <i class="fa fa-bars"></i>
     </div>
 </nav>
+<!-- Navbar End -->
+
 
 <section class="content">
-    <h1>New Perfect Arrivals</h1>
-    <p>Get The Best Sink Perfect Arrivals</p>
+    <div class="wrapper">
 
-    <div>
-        <a href="/users/login">
-            <button sec:authorize="!isAuthenticated()" type="button"><span></span>LOG IN</button>
-        </a>
-        <a href="/users/register">
-            <button sec:authorize="!isAuthenticated()" type="button"><span></span>REGISTER</button>
-        </a>
-        <a href="#products">
-            <button><span></span>Shop Now</button>
-        </a>
+        <!-- Registration form START -->
+        <form th:action="@{/product/add}"
+              th:method="POST"
+              th:object="${createProductDTO}">
+
+            <h1>Add Perfect Product</h1>
+
+            <div class="input-box">
+                <div class="input-field">
+                    <select id="category"
+                            th:name="category"
+                            th:field="*{category}"
+                            th:errorclass="is-invalid"
+                            class="form-control">
+                        <option value="">- Select category -</option>
+                        <option th:each="c : ${categories}"
+                                th:text="${c}"
+                                th:value="${c}"
+                                th:selected="${c} == *{category}">
+                        </option>
+                    </select>
+                </div>
+                <div class="input-field">
+                    <input id="brand"
+                           name="brand"
+                           type="text"
+                           placeholder="Brand" required>
+                    <i class='bx bx-category-alt' ></i>
+                </div>
+            </div>
+
+            <div class="input-box">
+                <div class="input-field">
+                    <input id="model"
+                           name="model"
+                           type="text"
+                           placeholder="Model" required>
+                    <i class='bx bx-category-alt' ></i>
+                </div>
+                <div class="input-field">
+                    <input id="name"
+                           name="name"
+                           type="text"
+                           placeholder="Name" required>
+                    <i class='bx bx-category-alt' ></i>
+                </div>
+            </div>
+
+            <div class="input-box">
+
+                <div class="input-field">
+                    <input id="price"
+                           name="price"
+                           type="number"
+                           placeholder="Price" required>
+                    <i class='bx bx-purchase-tag' ></i>
+                </div>
+            </div>
+
+            <div class="input-box">
+                <div class="input-field">
+                    <input id="discount"
+                           name="discount"
+                           type="number"
+                           value="0"
+                           placeholder="Discount">
+                    <i class='bx bxs-discount' ></i>
+                </div>
+                <div class="input-field">
+                    <input id="description"
+                           name="description"
+                           type="text"
+                           placeholder="Description" required>
+                    <i class='bx bx-text' ></i>
+                </div>
+            </div>
+
+            <button type="submit" class="btn">Add Product</button>
+        </form>
+        <!-- Registration form END -->
     </div>
 </section>
 
-<h1 id="products" class="pheading">Our Latest Perfect Products</h1>
-
-<section class="sec">
-    <div class="products">
-
-        <!---       Card Start      --->
-        <div class="card">
-            <div class="img"><img src="/images/categories/bath.png" alt=""></div>
-            <div class="desc">Bath</div>
-            <div class="title">Bath Gold</div>
-            <div class="box">
-                <div class="price">4200$</div>
-                <button class="btn">Buy Now</button>
-            </div>
-        </div>
-        <!---       Card End      --->
-
-        <!---       Card Start      --->
-        <div class="card">
-            <div class="img"><img src="/images/categories/sink.png" alt=""></div>
-            <div class="desc">Sink</div>
-            <div class="title">Sink Gold</div>
-            <div class="box">
-                <div class="price">50$</div>
-                <button class="btn">Buy Now</button>
-            </div>
-        </div>
-        <!---       Card End      --->
-
-        <!---       Card Start      --->
-        <div class="card">
-            <div class="img"><img src="/images/categories/shower.png" alt=""></div>
-            <div class="desc">Shower</div>
-            <div class="title">Shower Gold</div>
-            <div class="box">
-                <div class="price">550$</div>
-                <button class="btn">Buy Now</button>
-            </div>
-        </div>
-        <!---       Card End      --->
-
-        <!---       Card Start      --->
-        <div class="card">
-            <div class="img"><img src="/images/categories/sink.png" alt=""></div>
-            <div class="desc">Bath</div>
-            <div class="title">Bath Gold</div>
-            <div class="box">
-                <div class="price">50$</div>
-                <button class="btn">Buy Now</button>
-            </div>
-        </div>
-        <!---       Card End      --->
-
-        <!---       Card Start      --->
-        <div class="card">
-            <div class="img"><img src="/images/categories/sink.png" alt=""></div>
-            <div class="desc">Bath</div>
-            <div class="title">Bath Gold</div>
-            <div class="box">
-                <div class="price">50$</div>
-                <button class="btn">Buy Now</button>
-            </div>
-        </div>
-        <!---       Card End      --->
-
-
-    </div>
-</section>
-
-
+<!-- Footer -->
 <footer>
     <p>Copyright at <a href="">Perfect-Bathroom</a></p>
 </footer>
+<!-- Footer -->
 
 <!--- Jquery --->
 <script>
@@ -183,5 +191,8 @@
         $(".menu-btn i").toggleClass("active");
     });
 </script>
+<!--- Jquery End --->
+-->
+
 </body>
 </html>

@@ -26,7 +26,7 @@
 
 <!-- Navbar -->
 <nav class="navbar">
-    <a href="/"> <div class="logo"><h1>Perfect-Bathroom</h1></div></a>
+    <div class="logo"><a href="/"> <h1>Perfect-Bathroom</h1></a></div>
     <ul class="menu">
         <li><a href="/users/home" class="active">Home</a></li>
         <li><a href="/users/gallery">Gallery</a></li>
@@ -40,18 +40,18 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <form th:method="get"
-                      th:action="@{/}">
-                    <button sec:authorize="isAuthenticated()" type="submit" ><span></span>ACTION</button>
+                      th:action="@{/product/add}">
+                    <button sec:authorize="isAuthenticated()" type="submit"><span></span>Add Product</button>
                 </form>
                 <div class="dropdown-divider"></div>
                 <form th:method="get"
                       th:action="@{/}">
-                    <button sec:authorize="isAuthenticated()" type="submit" ><span></span>ACTION 1</button>
+                    <button sec:authorize="isAuthenticated()" type="submit"><span></span>ACTION 1</button>
                 </form>
                 <div class="dropdown-divider"></div>
                 <form th:method="get"
                       th:action="@{/}">
-                    <button sec:authorize="isAuthenticated()" type="submit" ><span></span>ACTION 2</button>
+                    <button sec:authorize="isAuthenticated()" type="submit"><span></span>ACTION 2</button>
                 </form>
             </div>
         </li>
@@ -68,14 +68,14 @@
 
                 <form th:method="get"
                       th:action="@{/users/profile}">
-                    <button sec:authorize="isAuthenticated()" type="submit" ><span></span>PROFILE</button>
+                    <button sec:authorize="isAuthenticated()" type="submit"><span></span>PROFILE</button>
                 </form>
 
                 <div class="dropdown-divider"></div>
 
                 <form th:method="post"
                       th:action="@{/users/logout}">
-                    <button sec:authorize="isAuthenticated()" type="submit" ><span></span>LOGOUT</button>
+                    <button sec:authorize="isAuthenticated()" type="submit"><span></span>LOGOUT</button>
                 </form>
 
             </div>
