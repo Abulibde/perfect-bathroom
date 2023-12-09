@@ -12,7 +12,17 @@ public class ProductSummaryDTO {
 
     private BigDecimal price;
 
-    public ProductSummaryDTO(String name, String brand, String model, BigDecimal price) {
+    private String imgUrl;
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public ProductSummaryDTO(String name, String brand, String model, BigDecimal price, String imgURL) {
     }
 
     public String getCategory() {

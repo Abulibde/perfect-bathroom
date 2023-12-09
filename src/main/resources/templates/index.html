@@ -104,7 +104,8 @@
 
 <h1 id="products" class="pheading">Our Latest Perfect Products</h1>
 
-<section class="sec">
+<section class="sec" th:each="product: ${products.getContent()}"
+         th:object="${product}">
     <div class="products">
 
         <!---       Card Start      --->

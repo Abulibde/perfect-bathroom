@@ -36,6 +36,10 @@ public class CreateProductDTO {
     @NotEmpty
     private String description;
 
+    @NotEmpty
+    private String imgUrl;
+
+
     public CreateProductDTO() {
         this.addedDate = LocalDateTime.now();
         this.discount = 0;
@@ -104,4 +108,12 @@ public class CreateProductDTO {
     public void setDescription(String description) {
         this.description = description;
     }
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
 }

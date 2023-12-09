@@ -38,7 +38,7 @@ public class ProductServiceImpl implements ProductService {
         return newProduct.getId();
     }
 
-    private ProductEntity map(CreateProductDTO createProductDTO){
+    private ProductEntity map(CreateProductDTO createProductDTO) {
 
         ProductEntity newProduct = new ProductEntity();
 
@@ -50,6 +50,7 @@ public class ProductServiceImpl implements ProductService {
         newProduct.setPrice(createProductDTO.getPrice());
         newProduct.setDiscount(createProductDTO.getDiscount());
         newProduct.setDescription(createProductDTO.getDescription());
+        newProduct.setImgUrl(createProductDTO.getImgUrl());
 
         return newProduct;
 
@@ -61,6 +62,7 @@ public class ProductServiceImpl implements ProductService {
                 productEntity.getCategory().name(),
                 productEntity.getBrand(),
                 productEntity.getModel(),
-                productEntity.getPrice());
+                productEntity.getPrice(),
+                productEntity.getImgUrl());
     }
 }

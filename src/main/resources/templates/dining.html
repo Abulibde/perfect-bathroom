@@ -105,63 +105,18 @@
 <h1 id="products" class="pheading">Our Latest Perfect Products</h1>
 
 <section class="sec">
-    <div class="products">
+    <div class="products" >
 
         <!---       Card Start      --->
-        <div class="card">
-            <div class="img"><img src="/images/categories/bath.png" alt=""></div>
+        <div class="card"
+             th:each="product: ${products.getContent()}"
+             th:object="${product}">
+
+            <div class="img"><img th:src="*{getImgUrl()}" alt=""></div>
             <div class="desc">Bath</div>
             <div class="title">Bath Gold</div>
             <div class="box">
-                <div class="price">4200$</div>
-                <button class="btn">Buy Now</button>
-            </div>
-        </div>
-        <!---       Card End      --->
-
-        <!---       Card Start      --->
-        <div class="card">
-            <div class="img"><img src="/images/categories/sink.png" alt=""></div>
-            <div class="desc">Sink</div>
-            <div class="title">Sink Gold</div>
-            <div class="box">
-                <div class="price">50$</div>
-                <button class="btn">Buy Now</button>
-            </div>
-        </div>
-        <!---       Card End      --->
-
-        <!---       Card Start      --->
-        <div class="card">
-            <div class="img"><img src="/images/categories/shower.png" alt=""></div>
-            <div class="desc">Shower</div>
-            <div class="title">Shower Gold</div>
-            <div class="box">
-                <div class="price">550$</div>
-                <button class="btn">Buy Now</button>
-            </div>
-        </div>
-        <!---       Card End      --->
-
-        <!---       Card Start      --->
-        <div class="card">
-            <div class="img"><img src="/images/categories/sink.png" alt=""></div>
-            <div class="desc">Bath</div>
-            <div class="title">Bath Gold</div>
-            <div class="box">
-                <div class="price">50$</div>
-                <button class="btn">Buy Now</button>
-            </div>
-        </div>
-        <!---       Card End      --->
-
-        <!---       Card Start      --->
-        <div class="card">
-            <div class="img"><img src="/images/categories/sink.png" alt=""></div>
-            <div class="desc">Bath</div>
-            <div class="title">Bath Gold</div>
-            <div class="box">
-                <div class="price">50$</div>
+                <div class="price"><th:block >4200$</th:block></div>
                 <button class="btn">Buy Now</button>
             </div>
         </div>
